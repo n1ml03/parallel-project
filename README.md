@@ -10,6 +10,6 @@ _______
 Install library by using `pip instal -r requirements.txt`
 
 ## Quick Start
-- Phase retrieval using simulated data. Run `demo_sim.m` with default parameters.
-- Phase retrieval using experimental data.
-- Try on your own experiment data. Prepare a hologram and an optional reference image, run `preprocessing.m` and set the experiment parameters (e.g. pixel size, wavelength, and sample-to-sensor distance). Then run `demo_exp.m` and see how it works.
+- Phase retrieval using simulated data. Run `demo_sim.py` with default parameters.
+- Phase retrieval using experimental data. Run `demo_exp.py` with default parameters.
+
