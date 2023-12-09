@@ -1,8 +1,9 @@
 path_name = "C:\\Users\\ADMIN\\Desktop\\parallel-project"
 
+
 import numpy as np
 import sys 
-sys.path.insert(0,  path_name + f'\\src\\func')
+sys.path.insert(0, path_name + f"\\src\\func")
 
 
 

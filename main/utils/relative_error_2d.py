@@ -3,7 +3,7 @@ path_name = "C:\\Users\\ADMIN\\Desktop\\parallel-project"
 import numpy as np
 import sys
 
-sys.path.insert(0, path_name + '\\main\\utils\\puma')
+sys.path.insert(0, path_name + f"\\main\\utils\\puma")
 from puma.puma_ho import puma_ho
 
 def relative_error_2d(x_es,x_gt,region):

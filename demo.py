@@ -1,5 +1,6 @@
 path_name = "C:\\Users\\ADMIN\\Desktop\\parallel-project"
 
+
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
@@ -18,8 +19,8 @@ from main.utils.propagate import propagate
 
 # Load the background and object images
 group_num = 1
-bg_path = path_name + f'\\data\\experiment\\E{group_num}\\bg.bmp'
-obj_path = path_name + f'\\data\\experiment\\E{group_num}\\obj.bmp'
+bg_path = path_name + f"\\data\\experiment\\E{group_num}/bg.bmp"
+obj_path = path_name + f"\\data\\experiment\\E{group_num}/obj.bmp"
 
 img_bg = cv2.imread(bg_path, cv2.IMREAD_GRAYSCALE)  # Read and convert to grayscale
 img_bg = img_bg.astype(np.float64) / 255.0

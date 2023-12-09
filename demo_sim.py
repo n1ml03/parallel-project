@@ -16,7 +16,7 @@ from main.utils.propagate import propagate
 
 # Load test image
 n = 256
-img = cv2.resize(cv2.imread( path_name + f'\\data\\simulation\\cameraman.bmp', cv2.IMREAD_GRAYSCALE).astype(np.float64) / 255.0, (n, n))
+img = cv2.resize(cv2.imread(path_name + f"\\data\\simulation\\cameraman.bmp", cv2.IMREAD_GRAYSCALE).astype(np.float64) / 255.0, (n, n))
 
 
 # Sample 

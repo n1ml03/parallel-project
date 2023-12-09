@@ -18,8 +18,8 @@ from src.func.constraints.indicator import indicator
 
 # Load the background and object images
 group_num = 1
-bg_path = path_name + f'\\data\\experiment\\E{group_num}\\bg.bmp'
-obj_path = path_name + f'\\data\\experiment\\E{group_num}\\obj.bmp'
+bg_path = path_name + f"\\data\\experiment\\E{group_num}\\bg.bmp"
+obj_path = path_name + f"\\data\\experiment\\E{group_num}\\obj.bmp"
 
 img_bg = cv2.imread(bg_path, cv2.IMREAD_GRAYSCALE)  # Read and convert to grayscale
 img_bg = img_bg.astype(np.float64) / 255.0
@@ -27,16 +27,6 @@ img_bg = img_bg.astype(np.float64) / 255.0
 img_obj = cv2.imread(obj_path, cv2.IMREAD_GRAYSCALE)  # Read and convert to grayscale
 img_obj = img_obj.astype(np.float64) / 255.0
 
-'''
-# Load parameters from a .mat file
-params_path = 'C:/Users/This Pc/Desktop/TTSS-cuoiky-master/data/experiment/E1/params.mat'
-data = loadmat(params_path)
-params = data['params']
-pxsize = params[0][0]['pxsize'][0][0]
-wavlen = params[0][0]['wavlen'][0][0]
-dist = params[0][0]['dist'][0][0]
-method = 'Angular Spectrum'
-'''
 
 pxsize = 0.0059
 wavlen = 0.00066
@@ -101,18 +91,6 @@ def QH(x):
 
 # Image cropping operation (to model the finite size of the sensor area)
 def imgcrop(x, cropsize):
-    """
-    Crop the central part of the image.
-
-    Input:
-    - x: Original image.
-    - cropsize: Cropping pixels.
-    """
-    '''
-    crop_start = (np.array(x.shape) - cropsize) // 2
-    crop_end = crop_start + cropsize
-    u = x[crop_start[0]:crop_end[0], crop_start[1]:crop_end[1]]
-    '''
 
     u = x[cropsize:-cropsize, cropsize:-cropsize]
 
@@ -142,23 +120,8 @@ def AH(x):
     return QH(CT(x))
 
 
-'''
-====================================================================================
-    Auxiliary functions
-====================================================================================
-'''
-
 def F(x, y, A):
-    '''
-    % =========================================================================
-    % Data-fidelity function.
-    % -------------------------------------------------------------------------
-    % Input:    - x   : The complex-valued transmittance of the sample.
-    %           - y   : Intensity image.
-    %           - A   : The sampling operator.
-    % Output:   - v   : Value of the fidelity function.
-    % =========================================================================
-    '''
+   
     def norm2(x):
         n = np.linalg.norm(x)
         return n 
@@ -167,18 +130,7 @@ def F(x, y, A):
 
 
 def dF(x, y, A, AH):
-    """
-    Gradient of the data-fidelity function.
 
-    Input:
-    - x: The complex-valued transmittance of the sample.
-    - y: Intensity image.
-    - A: The sampling operator.
-    - AH: Hermitian of A.
-
-    Output:
-    - g: Wirtinger gradient.
-    """
     u = A(x)
     u = (np.abs(u) - np.sqrt(y)) * np.exp(1j * np.angle(u))
     g = 1 / 2 * AH(u)

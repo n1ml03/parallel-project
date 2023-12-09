@@ -230,6 +230,13 @@ async def process_image(file: UploadFile = File(...)):
     plt.show()
 
 
+
+
+
+
+
+    
+
     # Trả về đường dẫn đến ảnh đã xử lý
     return {'processedImage': processed_img_path}
 
