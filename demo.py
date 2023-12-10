@@ -18,7 +18,7 @@ from src.func.prox import prox
 from main.utils.propagate import propagate
 
 # Load the background and object images
-group_num = 1
+group_num = 3
 bg_path = path_name + f"\\data\\experiment\\E{group_num}/bg.bmp"
 obj_path = path_name + f"\\data\\experiment\\E{group_num}/obj.bmp"
 

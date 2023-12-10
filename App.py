@@ -38,39 +38,24 @@ async def process_image(file: UploadFile = File(...)):
     # Kiểm tra file upload
     if not file:
         raise HTTPException(status_code=400, detail='Vui lòng chọn một file.')
-
     # Đọc file ảnh
     contents = await file.read()
     img = Image.open(BytesIO(contents))
     img = cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
-
-    # Xử lý ảnh
-    # ... (thay thế bằng code xử lý ảnh của bạn)
-
-
-
-
-
-
     processed_img = img
 
-    # Thư mục lưu trữ ảnh đã xử lý
-    upload_folder = 'uploads'  # Tên thư mục bạn muốn lưu trữ ảnh
+    upload_folder = 'uploads'  
     os.makedirs(upload_folder, exist_ok=True)  # Tạo thư mục nếu nó chưa tồn tại
 
-    # Tên file và đường dẫn để lưu ảnh đã xử lý
+    # Tên file và đường dẫn để lưu ảnh 
     processed_img_filename = 'C:/Users/ADMIN/Desktop/parallel-project/uploads/processed_image.png'
     processed_img_path = os.path.join(upload_folder, processed_img_filename)
-
-    # Lưu ảnh đã xử lý
+    # Lưu ảnh 
     cv2.imwrite(processed_img_path, cv2.cvtColor(processed_img, cv2.COLOR_RGB2BGR))
-
-
 
     # Load test image
     n = 256
     img = cv2.resize(cv2.imread('C:/Users/ADMIN/Desktop/parallel-project/uploads/processed_image.png', cv2.IMREAD_GRAYSCALE).astype(np.float64) / 255.0, (n, n))
-
 
     # Sample 
     x = np.exp(1j * np.pi * img)
@@ -123,8 +108,6 @@ async def process_image(file: UploadFile = File(...)):
     kernelsize = dist * wavlen / pxsize / 2
     nullpixels = int(np.ceil(kernelsize / pxsize))
     x = zeropad(x, nullpixels)
-
-
 
     # Define the constraint
     global constraint
@@ -222,20 +205,8 @@ async def process_image(file: UploadFile = File(...)):
     plt.colorbar()
     plt.title('Intensity measurement', fontsize=12)
 
-    # Hiển thị hình vẽ
     plt.savefig('C:/Users/ADMIN/Desktop/parallel-project/uploads/image.png', bbox_inches='tight')
     plt.ion()
-
-
-    plt.show()
-
-
-
-
-
-
-
-    
 
     # Trả về đường dẫn đến ảnh đã xử lý
     return {'processedImage': processed_img_path}
